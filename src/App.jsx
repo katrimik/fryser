@@ -4,11 +4,14 @@ import "./App.css";
 function App() {
   const [list, setList] = useState(["hamburger","spinat"]);
   const [newItem, setNewItem] = useState(''); //input-felt
-  
 
   function handleItem(){
     setList([...list, newItem]);
     setNewItem('');
+  }
+  const handleDelete = (deletingItem) => {
+    const newList = list.filter((i) => i !== deletingItem);
+    setList(newList); 
   }
 
   return (
@@ -17,11 +20,14 @@ function App() {
       <p>
         Du har {list.length} varer i fryseren
       </p>
-      <ul>{list.map((item) => (<li>{item}</li>))}</ul>
+      <ul>
+        {list.map((item) => (<li>{item} <button onClick={ () => handleDelete(item)}>Remove</button></li>))}
+        </ul>
       <input value={newItem} onChange={(event)=>setNewItem(event.currentTarget.value)} placeholder="fyll inn"></input>
       <button onClick={handleItem}>
         Add item
       </button>
+      
       {/* <p>
         Du kan se koden for dette prosjektet{" "}
         <a href="https://github.com/bekk/flyt">i repoet på GitHub</a>
