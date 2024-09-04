@@ -17,14 +17,14 @@ function App() {
   return (
     <div className="card">
       <h1>Her er fryseren din! 👋</h1>
-      <p>
+      <p className="kursiv">
         Du har {list.length} varer i fryseren
       </p>
-      <ul>
-        {list.map((item) => (<li>{item} <button onClick={ () => handleDelete(item)}>Remove</button></li>))}
+      <ul className="items">
+        {list.map((item) => (<li>{item} <button className="button-8" onClick={ () => handleDelete(item)}>Remove</button></li>))}
         </ul>
       <input value={newItem} onChange={(event)=>setNewItem(event.currentTarget.value)} placeholder="fyll inn"></input>
-      <button onClick={handleItem}>
+      <button onClick={handleItem} className="button-8">
         Add item
       </button>
       
